@@ -1,0 +1,46 @@
+Implements nested templates in Go.
+Uses the template package, but allows for nested templates.
+
+Example of use:
+  // Create a configuration, specifies the base dir, and if the templates
+  // files should be cached.
+  conf := &Config{Basedir: "testdata", Cache: false}
+
+  // Create a template that will be nested
+  nested := MakeTemplate("nested.tpl", conf)
+  // And set some values.
+  nested.Vars["var1"] = []string{"Nested", "Simple", "Useful"}
+
+  // Create the parent template
+  a := MakeTemplate("main.tpl", conf)
+  // Add the nested template, and some more values.
+  a.Vars["child"] = nested
+  a.Vars["s1"] = "Hello"
+  a.Vars["s2"] = "Thanks, Bye!"
+
+  // Finally, render the template.
+  s, _ := a.Render()
+
+
+nested.tpl:
+They are:
+{.repeated section var1}
+- {@},
+{.end}
+
+main.tpl:
+{s1} Nested Templates,
+{child}
+{s2}
+
+Expected output:
+Hello Nested Templates,
+They are:
+- Nested,
+- Simple,
+- Useful,
+Thanks, Bye!
+
+
+Known issues:
+It seems that some new lines are inserted after the template variables. Will investigate.
