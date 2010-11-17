@@ -6,7 +6,7 @@ goinstall github.com/yohcop/ntemplate.go/ntemplate
 
 
 Example of use:
-  import "ntemplate"
+  import "github.com/yohcop/ntemplate.go/ntemplate"
   // ...
 
   // Create a configuration, specifies the base dir, and if the templates
