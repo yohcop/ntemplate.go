@@ -1,7 +1,14 @@
 Implements nested templates in Go.
 Uses the template package, but allows for nested templates.
 
+Install:
+goinstall github.com/yohcop/ntemplate.go/ntemplate
+
+
 Example of use:
+  import "ntemplate"
+  // ...
+
   // Create a configuration, specifies the base dir, and if the templates
   // files should be cached.
   conf := &Config{Basedir: "testdata", Cache: false}
