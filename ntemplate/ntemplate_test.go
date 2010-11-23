@@ -1,6 +1,8 @@
 package ntemplate
 
-import "testing"
+import (
+  "testing"
+)
 
 var expected=`<html>
 <title>Hello NTemplate</title>
@@ -29,9 +31,11 @@ func TestNTemplate(t *testing.T) {
   a.Vars["b"] = b
   a.Vars["f"] = 12.3456789
   a.Vars["s"] = "a string"
-  s, _ := a.Render()
+  s, err := a.Render()
   if s != expected {
     t.Error(s + ".\nexpected\n" + expected + ".")
   }
+  if err != nil {
+    t.Error("Error while rendering: " + err.String())
+  }
 }
-
