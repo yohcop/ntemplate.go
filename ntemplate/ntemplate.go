@@ -1,12 +1,12 @@
 package ntemplate
 
 import (
-  "io"
-  "os"
-  "template"
-  "path"
   "bytes"
+  "io"
   "log"
+  "os"
+  "path"
+  "template"
 )
 
 type NTemplate struct {
@@ -21,7 +21,7 @@ type Config struct {
   cache   map[string]*template.Template
 }
 
-func MakeTemplate(path string, conf *Config) *NTemplate {
+func (conf *Config) Template(path string) *NTemplate {
   return &NTemplate{
     File: path,
     Vars: make(map[string]interface{}),

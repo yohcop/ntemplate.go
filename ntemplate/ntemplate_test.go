@@ -19,14 +19,14 @@ a string
 
 func TestNTemplate(t *testing.T) {
   conf := &Config{Basedir: "testdata", Cache: false}
-  sub2 := MakeTemplate("sub/sub2.tpl", conf)
-  sub1 := MakeTemplate("sub/sub1.tpl", conf)
+  sub2 := conf.Template("sub/sub2.tpl")
+  sub1 := conf.Template("sub/sub1.tpl")
   sub1.Vars["sub"] = sub2
 
-  b := MakeTemplate("t2.tpl", conf)
+  b := conf.Template("t2.tpl")
   b.Vars["var1"] = sub1
 
-  a := MakeTemplate("t1.tpl", conf)
+  a := conf.Template("t1.tpl")
   a.Vars["head"] = "<title>Hello NTemplate</title>"
   a.Vars["b"] = b
   a.Vars["f"] = 12.3456789
