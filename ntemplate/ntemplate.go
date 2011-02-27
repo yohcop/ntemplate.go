@@ -71,7 +71,7 @@ func (s *NTemplate) Render() (string, os.Error) {
     tplMap[sk] = s.stringify(el)
   }
   var a bytes.Buffer
-  tpl.Execute(tplMap, &a)
+  tpl.Execute(&a, tplMap)
   return a.String(), nil
 }
 

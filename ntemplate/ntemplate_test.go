@@ -11,7 +11,7 @@ var expected=`<html>
 </span>
 </div>
 
-12.345679
+12.3456789
 a string
 </body>
 </html>
